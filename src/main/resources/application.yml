@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/intratime?serverTimezone=UTC
+    username: root
+    password: 1234  
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 8080
