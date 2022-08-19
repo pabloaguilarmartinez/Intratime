@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class RequestsControllerTest {
+class RequestsControllerTest {
 
     private final EasyRandom generator = new EasyRandom();
 
@@ -37,6 +37,7 @@ public class RequestsControllerTest {
         Collection<RequestInfo> response = requestsController.findAll().getBody();
 
         assertEquals(existingRequests, response);
+        assert response != null;
         assertEquals(4, response.size());
     }
 

@@ -12,13 +12,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class CheckingsControllerTest {
+class CheckingsControllerTest {
 
     private final EasyRandom generator = new EasyRandom();
 
@@ -37,7 +38,7 @@ public class CheckingsControllerTest {
         ResponseEntity<Collection<CheckingInfo>> response = checkingsController.findAll();
 
         assertEquals(existingCheckings, response.getBody());
-        assertEquals(5, response.getBody().size());
+        assertEquals(5, Objects.requireNonNull(response.getBody()).size());
 
     }
 

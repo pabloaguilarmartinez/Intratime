@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UsersControllerTest {
+class UsersControllerTest {
 
     private final EasyRandom generator = new EasyRandom();
 
@@ -38,6 +38,7 @@ public class UsersControllerTest {
         Collection<UserInfo> response = usersController.findUsers().getBody();
 
         assertEquals(existingUsers, response);
+        assert response != null;
         assertEquals(5, response.size());
     }
 
@@ -50,6 +51,7 @@ public class UsersControllerTest {
         Collection<CheckingBasicInfo> response = usersController.findCheckingsUserById(1).getBody();
 
         assertEquals(userCheckings, response);
+        assert response != null;
         assertEquals(6, response.size());
     }
 
@@ -62,6 +64,7 @@ public class UsersControllerTest {
         Collection<RequestBasicInfo> response = usersController.findRequestsUserById(1).getBody();
 
         assertEquals(userRequests, response);
+        assert response != null;
         assertEquals(7, response.size());
     }
 
