@@ -1,9 +1,16 @@
+# Datasource, JPA, Hibernate
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/intratime?serverTimezone=UTC
-    username: root
-    password: 1234  
+    url: jdbc:postgresql://localhost:5432/intratime?serverTimezone=UTC
+    username: postgres
+    password: 123qweASD
+    driverClassName: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+# Port
 server:
-  port: 8080
+  port: ${PORT:8080}

@@ -3,8 +3,10 @@ package com.mindden.controller;
 import static com.mindden.constants.Constants.REQUESTS_URI;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+import java.net.URI;
 import java.util.Collection;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,13 +26,14 @@ public class RequestsController {
 	private final RequestsService requestsService;
 	
 	@GetMapping
-	public Collection<RequestInfo> findAll(){
-		return requestsService.findAll();
+	public ResponseEntity<Collection<RequestInfo>> findAll() {
+		return ResponseEntity.ok(requestsService.findAll());
 	}
 	
 	@PostMapping
-	public void create(@RequestBody RequestInfo dto) {
-		requestsService.create(dto);
+	public ResponseEntity<RequestInfo> create(@RequestBody RequestInfo dto) {
+		URI location = URI.create(REQUESTS_URI);
+		return ResponseEntity.created(location).body(requestsService.create(dto));
 	}
 	
 }

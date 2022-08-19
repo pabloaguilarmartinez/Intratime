@@ -1,14 +1,13 @@
 package com.mindden.mapper;
 
-import java.util.Collection;
-
-
-import org.mapstruct.Mapper;
-
 import com.mindden.entity.Checking;
 import com.mindden.model.CheckingBasicInfo;
 import com.mindden.model.CheckingInfo;
 import com.mindden.model.CheckingNewInfo;
+import org.mapstruct.Mapper;
+
+import java.util.Collection;
+import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
@@ -22,7 +21,7 @@ public interface CheckingsMapper {
 	CheckingNewInfo toNewDto(Checking source);
 	
 	Checking toEntity(CheckingInfo source);
-	
+
 	Checking toNewEntity(CheckingNewInfo source);
 	
 	default Collection<CheckingInfo> toDtos(final Collection<Checking> sources) {

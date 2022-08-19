@@ -1,12 +1,5 @@
 package com.mindden.service;
 
-import java.util.Collection;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Service;
-
 import com.mindden.mapper.CheckingsMapper;
 import com.mindden.mapper.RequestsMapper;
 import com.mindden.mapper.UsersMapper;
@@ -14,8 +7,11 @@ import com.mindden.model.CheckingBasicInfo;
 import com.mindden.model.RequestBasicInfo;
 import com.mindden.model.UserInfo;
 import com.mindden.repository.UsersRepository;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +27,7 @@ public class UsersService {
 		usersRepository.save(usersMapper.toEntity(dto));
 	}
 	
-	public List<UserInfo> findAll(){
+	public Collection<UserInfo> findAll(){
         return usersMapper.toDtos(usersRepository.findAll());
 	}
 	

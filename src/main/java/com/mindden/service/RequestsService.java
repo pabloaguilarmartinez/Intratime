@@ -20,8 +20,10 @@ public class RequestsService {
 	private final RequestsMapper requestsMapper;
 	
 	@Transactional
-	public void create(RequestInfo dto) {	
+	public RequestInfo create(RequestInfo dto) {
 		requestsRepository.save(requestsMapper.toEntity(dto));
+
+		return dto;
 	}
 	
 	public Collection<RequestInfo> findAll() {
