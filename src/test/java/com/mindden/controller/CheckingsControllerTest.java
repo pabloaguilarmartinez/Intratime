@@ -38,8 +38,8 @@ class CheckingsControllerTest {
         ResponseEntity<Collection<CheckingInfo>> response = checkingsController.findAll();
 
         assertEquals(existingCheckings, response.getBody());
-        assertEquals(5, Objects.requireNonNull(response.getBody()).size());
-
+        assertEquals(existingCheckings.size(), Objects.requireNonNull(response.getBody()).size());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test

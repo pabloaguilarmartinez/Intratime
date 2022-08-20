@@ -10,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -35,11 +37,12 @@ class UsersControllerTest {
                 .collect(Collectors.toList());
         when(usersService.findAll()).thenReturn(existingUsers);
 
-        Collection<UserInfo> response = usersController.findUsers().getBody();
+        ResponseEntity<Collection<UserInfo>> response = usersController.findUsers();
 
-        assertEquals(existingUsers, response);
+        assertEquals(existingUsers, response.getBody());
         assert response != null;
-        assertEquals(5, response.size());
+        assertEquals(existingUsers.size(), response.getBody().size());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
@@ -48,11 +51,12 @@ class UsersControllerTest {
                 .collect(Collectors.toList());
         when(usersService.findCheckingsUserById(any())).thenReturn(userCheckings);
 
-        Collection<CheckingBasicInfo> response = usersController.findCheckingsUserById(1).getBody();
+        ResponseEntity<Collection<CheckingBasicInfo>> response = usersController.findCheckingsUserById(1);
 
-        assertEquals(userCheckings, response);
+        assertEquals(userCheckings, response.getBody());
         assert response != null;
-        assertEquals(6, response.size());
+        assertEquals(userCheckings.size(), response.getBody().size());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
@@ -61,11 +65,12 @@ class UsersControllerTest {
                 .collect(Collectors.toList());
         when(usersService.findRequestsUserById(any())).thenReturn(userRequests);
 
-        Collection<RequestBasicInfo> response = usersController.findRequestsUserById(1).getBody();
+        ResponseEntity<Collection<RequestBasicInfo>> response = usersController.findRequestsUserById(1);
 
-        assertEquals(userRequests, response);
+        assertEquals(userRequests, response.getBody());
         assert response != null;
-        assertEquals(7, response.size());
+        assertEquals(userRequests.size(), response.getBody().size());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
 }

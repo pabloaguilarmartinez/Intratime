@@ -21,9 +21,7 @@ public class RequestsService {
 	
 	@Transactional
 	public RequestInfo create(RequestInfo dto) {
-		requestsRepository.save(requestsMapper.toEntity(dto));
-
-		return dto;
+		return requestsMapper.toDto(requestsRepository.save(requestsMapper.toEntity(dto)));
 	}
 	
 	public Collection<RequestInfo> findAll() {

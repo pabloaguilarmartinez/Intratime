@@ -34,11 +34,12 @@ class RequestsControllerTest {
                 .collect(Collectors.toList());
         when(requestsService.findAll()).thenReturn(existingRequests);
 
-        Collection<RequestInfo> response = requestsController.findAll().getBody();
+        ResponseEntity<Collection<RequestInfo>> response = requestsController.findAll();
 
-        assertEquals(existingRequests, response);
+        assertEquals(existingRequests, response.getBody());
         assert response != null;
-        assertEquals(4, response.size());
+        assertEquals(existingRequests.size(), response.getBody().size());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test

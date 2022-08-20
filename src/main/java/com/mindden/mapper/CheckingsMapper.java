@@ -3,11 +3,9 @@ package com.mindden.mapper;
 import com.mindden.entity.Checking;
 import com.mindden.model.CheckingBasicInfo;
 import com.mindden.model.CheckingInfo;
-import com.mindden.model.CheckingNewInfo;
 import org.mapstruct.Mapper;
 
 import java.util.Collection;
-import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
@@ -18,11 +16,7 @@ public interface CheckingsMapper {
 	
 	CheckingBasicInfo toBasicDto(Checking source);
 	
-	CheckingNewInfo toNewDto(Checking source);
-	
 	Checking toEntity(CheckingInfo source);
-
-	Checking toNewEntity(CheckingNewInfo source);
 	
 	default Collection<CheckingInfo> toDtos(final Collection<Checking> sources) {
         return sources.stream().map(this::toDto).collect(toList());
@@ -31,8 +25,5 @@ public interface CheckingsMapper {
 	default Collection<CheckingBasicInfo> toBasicDtos(final Collection<Checking> sources) {
         return sources.stream().map(this::toBasicDto).collect(toList());
     }
-	
-	default Collection<CheckingNewInfo> toNewDtos(final Collection<Checking> sources) {
-        return sources.stream().map(this::toNewDto).collect(toList());
-    }
+
 }

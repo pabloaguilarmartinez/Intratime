@@ -20,7 +20,7 @@
 		<java.version>11</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<mapstruct.version>1.5.2.Final</mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -74,7 +74,7 @@
 		<dependency>
 			<groupId>org.jeasy</groupId>
 			<artifactId>easy-random-core</artifactId>
-			<version>4.0.0</version>
+			<version>5.0.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

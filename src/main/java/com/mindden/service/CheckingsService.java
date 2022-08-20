@@ -18,9 +18,7 @@ public class CheckingsService {
 
     @Transactional
     public CheckingInfo create(CheckingInfo dto) {
-        checkingsRepository.save(checkingsMapper.toEntity(dto));
-
-        return dto;
+        return checkingsMapper.toDto(checkingsRepository.save(checkingsMapper.toEntity(dto)));
     }
 
     public Collection<CheckingInfo> findAll() {
